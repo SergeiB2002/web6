@@ -60,7 +60,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
   }
   $users=$inf;
   $pwrs=$inf2;
-  include('table.php');
+  include('tab.php');
 }
 else{
   
