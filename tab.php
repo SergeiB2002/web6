@@ -73,10 +73,10 @@
       ?>
     </table>
     <?php
-    printf('Кол-во пользователей с Immortal: %d <br>',$pwrs_count[0]);
-    printf('Кол-во пользователей с NoClip: %d <br>',$pwrs_count[1]);
-    printf('Кол-во пользователей с Power: %d <br>',$pwrs_count[2]);
-    printf('Кол-во пользователей с Telepat: %d <br>',$pwrs_count[3]);
+    printf('Пользователи с Immortal: %d <br>',$pwrs_count[0]);
+    printf('Пользователи с NoClip: %d <br>',$pwrs_count[1]);
+    printf('Пользователи с Power: %d <br>',$pwrs_count[2]);
+    printf('Пользователи с Telepat: %d <br>',$pwrs_count[3]);
     ?>
   </div>
 </body>
