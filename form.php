@@ -43,6 +43,17 @@ textarea {
 .error {
     border: 3px solid red;
   }
+.button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
 </style>
 <?php
 if (!empty($messages)) {
@@ -58,7 +69,7 @@ if (!empty($messages)) {
    <div id="form">
     <h1>Форма контракта</h1>
 
-    <form action="index.php" method="POST">
+    <form action="ind.php" method="POST">
 
       <label>
         Имя:<br />
@@ -133,41 +144,15 @@ if (!empty($messages)) {
         Биография:<br />
         <textarea name="field-bio"> <?php print $values['field-bio']; ?> </textarea>
       </label><br />
-
-     // Чекбокс:
-      <?php 
-       $cl_e='';
-       $ch='';
-       if($values['checkbox'] or !empty($_SESSION['login'])){
-       $ch='checked';
-       }
-       if ($errors['checkbox']) {
-       $cl_e='class="error"';
-       }
-       if(empty($_SESSION['login'])){
-       print('
-       <div  '.$cl_e.' >
-       <input name="check" type="checkbox" '.$ch.'> Я болею за Red Bull Racing <br>
-       </div>');}
-       ?>
+      <input name='dd' hidden value=<?php print($_GET['edit_id']);?>>
+      <input type="submit" name='edit' value="Edit"/>
+      <input type="submit" name='del' value="Delete"/>
 
       Если уверенны в своем ответе нажимайте:
       <input type="submit" value="Send" />
     </form>
-   <?php
-  if(empty($_SESSION['login'])){
-   echo'
-   <div class="login">
-    <p>Имеется аккаунт? <a href="login.php">Входите!</a></p>
-   </div>';
-  }
-  else{
-    echo '
-    <div class="logout">
-      <form action="index.php" method="post">
-        <input name="logout" type="submit" value="Выйти">
-      </form>
-    </div>';
-  } ?>
+   <p>
+    <a href='admin.php' class="button">Назад</a>
+    </p>
    </div>
 </body>
