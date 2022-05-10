@@ -97,8 +97,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $pass = '2356452';
   $db = new PDO('mysql:host=localhost;dbname=u41028', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
   try{
+      $id=$_GET['edit_id'];
       $get=$db->prepare("SELECT * FROM application WHERE id=?");
-      $get->bindParam(1,$_SESSION['uid']);
+      $get->bindParam(1,$id);
       $get->execute();
       $inf=$get->fetchALL();
       $values['field-name']=$inf[0]['name'];
@@ -109,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $values['field-bio']=$inf[0]['biogr'];
     
       $get2=$db->prepare("SELECT name FROM superp WHERE per_id=?");
-      $get2->bindParam(1,$_SESSION['uid']);
+      $get2->bindParam(1,$id);
       $get2->execute();
       $inf2=$get2->fetchALL();
       for($i=0;$i<count($inf2);$i++){
@@ -207,7 +208,6 @@ else {
     $pass = '2356452';
     $db = new PDO('mysql:host=localhost;dbname=u41028', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
     if(!$errors){
-      $id=$_SESSION['uid'];
       $upd=$db->prepare("UPDATE application SET name=:name, email=:email, year=:byear, pol=:pol, konech=:limbs, biogr=:bio WHERE id=:id");
       $cols=array(
         ':name'=>$name,
