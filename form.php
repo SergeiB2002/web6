@@ -147,9 +147,6 @@ if (!empty($messages)) {
       <input name='dd' hidden value=<?php print($_GET['edit_id']);?>>
       <input type="submit" name='edit' value="Edit"/>
       <input type="submit" name='del' value="Delete"/>
-
-      Если уверенны в своем ответе нажимайте:
-      <input type="submit" value="Send" />
     </form>
    <p>
     <a href='admin.php' class="button">Назад</a>
