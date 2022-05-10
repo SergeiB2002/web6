@@ -23,3 +23,21 @@ if (empty($_SERVER['PHP_AUTH_USER']) ||
 if(empty($_GET['edit_id'])){
   header('Location: admin.php');
 }
+header('Content-Type: text/html; charset=UTF-8');
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+  $messages = array();
+  if (!empty($_COOKIE['save'])) {
+    setcookie('save', '', 100000);
+    $messages[] = 'Спасибо, результаты сохранены.';
+    setcookie('name_value', '', 100000);
+    setcookie('email_value', '', 100000);
+    setcookie('year_value', '', 100000);
+    setcookie('pol_value', '', 100000);
+    setcookie('limb_value', '', 100000);
+    setcookie('bio_value', '', 100000);
+    setcookie('power_value', '', 100000);
+    setcookie('telepat_value', '', 100000);
+    setcookie('noclip_value', '', 100000);
+    setcookie('immortal_value', '', 100000);
+    setcookie('check_value', '', 100000);
+  }
