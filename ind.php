@@ -151,10 +151,6 @@ else {
       setcookie('name_value', '', 100000);
       $errors = TRUE;
     }
-    else {
-      setcookie('name_value', $fio, time() + 60 * 60);
-      setcookie('name_error','',100000);
-    }
 
     if (empty($email) || !filter_var($email,FILTER_VALIDATE_EMAIL) ||
      (!preg_match($mailregex,$email))) {
@@ -162,77 +158,34 @@ else {
       setcookie('email_value', '', 100000);
       $errors = TRUE;
     }
-    else {
-      setcookie('email_value', $email, time() + 60 * 60);
-      setcookie('email_error','',100000);
-    }
-
+    
     if ($year=='Год') {
       setcookie('year_error', '1', time() + 24 * 60 * 60);
       setcookie('year_value', '', 100000);
       $errors = TRUE;
     }
-    else {
-      setcookie('year_value', intval($year), time() + 60 * 60);
-      setcookie('year_error','',100000);
-    }
-
+   
     if (!isset($pol)) {
       setcookie('pol_error', '1', time() + 24 * 60 * 60);
       setcookie('pol_value', '', 100000);
       $errors = TRUE;
     }
-    else {
-      setcookie('pol_value', $pol, time() + 60 * 60);
-      setcookie('pol_error','',100000);
-    }
-
+    
     if (!isset($limbs)) {
       setcookie('limb_error', '1', time() + 24 * 60 * 60);
       setcookie('limb_value', '', 100000);
       $errors = TRUE;
     }
-    else {
-      setcookie('limb_value', $limbs, time() + 60 * 60);
-      setcookie('limb_error','',100000);
-    }
 
     if (!isset($powers)) {
       setcookie('super_error', '1', time() + 24 * 60 * 60);
-      setcookie('immortal_value', '', 100000);
-      setcookie('noclip_value', '', 100000);
-      setcookie('power_value', '', 100000);
-      setcookie('telepat_value', '', 100000);
       $errors = TRUE;
-    }
-    else {
-      $apw=array(
-        "immortal_value"=>0,
-        "noclip_value"=>0,
-        "power_value"=>0,
-        "telepat_value"=>0
-      );
-    foreach($powers as $pwer){
-      if($pwer=='immortal'){setcookie('immortal_value', 1, time() + 12 * 30 * 24 * 60 * 60); $apw['immortal_value']=1;} 
-      if($pwer=='noclip'){setcookie('noclip_value', 1, time() + 12*30 * 24 * 60 * 60);$apw['noclip_value']=1;} 
-      if($pwer=='power'){setcookie('power_value', 1, time() + 12*30 * 24 * 60 * 60);$apw['power_value']=1;} 
-      if($pwer=='telepat'){setcookie('telepat_value', 1, time() + 12*30 * 24 * 60 * 60);$apw['telepat_value']=1;}
-      }
-    foreach($apw as $c=>$val){
-      if($val==0){
-        setcookie($c,'',100000);
-        }
-      }
     }
     
     if ((empty($bio)) || (!preg_match($bioregex,$bio))) {
       setcookie('bio_error', '1', time() + 24 * 60 * 60);
       setcookie('bio_value', '', 100000);
       $errors = TRUE;
-    }
-    else {
-      setcookie('bio_value', $bio, time() + 12 * 30 * 24 * 60 * 60);
-      setcookie('bio_error', '', 100000);
     }
     
     if ($errors) {
