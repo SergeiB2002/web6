@@ -144,7 +144,11 @@ else {
     $limbs=$_POST['radio-limb'];
     $powers=$_POST['field-super'];
     $bio=$_POST['field-bio'];
-    
+
+    //Регулярные выражения
+    $bioregex = "/^\s*\w+[\w\s\.,-]*$/";
+    $nameregex = "/^\w+[\w\s-]*$/";
+    $mailregex = "/^[\w\.-]+@([\w-]+\.)+[\w-]{2,4}$/";
     $errors = FALSE;
     
     if (empty($name) || (!preg_match($nameregex,$name))) {
