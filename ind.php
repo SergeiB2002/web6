@@ -92,3 +92,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['noclip'] = 0;
   $values['power'] = 0;
   $values['telepat'] = 0;
+  
+  $user = 'u41028';
+  $pass = '2356452';
+  $db = new PDO('mysql:host=localhost;dbname=u41028', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+  try{
+      $get=$db->prepare("SELECT * FROM application WHERE id=?");
+      $get->bindParam(1,$_SESSION['uid']);
+      $get->execute();
+      $inf=$get->fetchALL();
+      $values['field-name']=$inf[0]['name'];
+      $values['field-email']=$inf[0]['email'];
+      $values['year']=$inf[0]['year'];
+      $values['radio-pol']=$inf[0]['pol'];
+      $values['radio-limb']=$inf[0]['konech'];
+      $values['field-bio']=$inf[0]['biogr'];
+    
+      $get2=$db->prepare("SELECT name FROM superp WHERE per_id=?");
+      $get2->bindParam(1,$_SESSION['uid']);
+      $get2->execute();
+      $inf2=$get2->fetchALL();
+      for($i=0;$i<count($inf2);$i++){
+        if($inf2[$i]['name']=='power'){
+          $values['power']=1;
+        }
+        if($inf2[$i]['name']=='telepat'){
+          $values['telepat']=1;
+        }
+        if($inf2[$i]['name']=='immortal'){
+          $values['immortal']=1;
+        }
+        if($inf2[$i]['name']=='noclip'){
+          $values['noclip']=1;
+        }
+      }
+    }
+    catch(PDOException $e){
+      print('Error: '.$e->getMessage());
+      exit();
+  }
+  include('form.php');
+}
+
