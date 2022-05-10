@@ -41,3 +41,54 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     setcookie('immortal_value', '', 100000);
     setcookie('check_value', '', 100000);
   }
+  
+  $errors = array();
+  $error=FALSE;
+  $errors['field-name'] = !empty($_COOKIE['name_error']);
+  $errors['field-email'] = !empty($_COOKIE['email_error']);
+  $errors['year'] = !empty($_COOKIE['year_error']);
+  $errors['radio-pol'] = !empty($_COOKIE['pol_error']);
+  $errors['radio-limb'] = !empty($_COOKIE['limb_error']);
+  $errors['field-super'] = !empty($_COOKIE['super_error']);
+  $errors['field-bio'] = !empty($_COOKIE['bio_error']);
+  $errors['checkbox'] = !empty($_COOKIE['check_error']);
+  if ($errors['field-name']) {
+    setcookie('name_error', '', 100000);
+    $messages[] = '<div class="error">Заполните имя или у него неверный формат (only English)</div>';
+    $error=TRUE;
+  }
+  if ($errors['field-email']) {
+    setcookie('email_error', '', 100000);
+    $messages[] = '<div class="error">Заполните имейл или у него неверный формат</div>';
+    $error=TRUE;
+  }
+  if ($errors['year']) {
+    setcookie('year_error', '', 100000);
+    $messages[] = '<div class="error">Выберите год.</div>';
+    $error=TRUE;
+  }
+  if ($errors['radio-pol']) {
+    setcookie('pol_error', '', 100000);
+    $messages[] = '<div class="error">Выберите пол.</div>';
+    $error=TRUE;
+  }
+  if ($errors['radio-limb']) {
+    setcookie('limb_error', '', 100000);
+    $messages[] = '<div class="error">Укажите кол-во конечностей.</div>';
+    $error=TRUE;
+  }
+  if ($errors['field-super']) {
+    setcookie('super_error', '', 100000);
+    $messages[] = '<div class="error">Выберите суперспособности(хотя бы одну).</div>';
+    $error=TRUE;
+  }
+  if ($errors['field-bio']) {
+    setcookie('bio_error', '', 100000);
+    $messages[] = '<div class="error">Заполните биографию или у неё неверный формат (only English)</div>';
+    $error=TRUE;
+  }
+  $values = array();
+  $values['immortal'] = 0;
+  $values['noclip'] = 0;
+  $values['power'] = 0;
+  $values['telepat'] = 0;
